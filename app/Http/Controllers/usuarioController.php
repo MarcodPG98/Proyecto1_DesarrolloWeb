@@ -83,7 +83,6 @@ class usuarioController extends Controller
         $historial_emp = historial_emp::where('id_usuario',$id_usuario)->latest('tipo_entrada')->first()->tipo_entrada;
 
         // comparamos
-
         if($historial_emp == 1){ // tipo_entrada = 1 ----- > tipo_entrada = 2
 
             $updateUsuario = DB::table('historial_emp')
@@ -96,30 +95,11 @@ class usuarioController extends Controller
                 'message' => "empleado updated successfully!",
                 'empleado' => $empleado
             ], 200);
-        } 
-        
-        if($historial_emp == 1){ // tipo_entrada = 1 ----- > tipo_entrada = 2
-
-            $updateUsuario = DB::table('historial_emp')
-              ->where('id_usuario',$id_usuario)
-              ->update(['tipo_entrada' => 2]);
-
-            $empleado = empleado::where('id_empleado', $id_usuario)->get(['id_empleado','nombres','apellidos']);
-
-            return response()->json([
-                'message' => "empleado updated successfully!",
-                'empleado' => $empleado
-            ], 200);
-        } 
+        }
 
         if($historial_emp == 2){ // tipo entrada = 2 ----- > actualizar fecha y hora
             $historial_emp = historial_emp::where('id_usuario',$id_usuario)->get();
         }
-
-        return response()->json([
-            'message' => "usuario updated successfully!",
-            'usuario' => $historial_emp
-        ], 200);
     }
 
     /**
