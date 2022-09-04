@@ -63,18 +63,21 @@ class historial_empController extends Controller
      */
     public function historialUsuario($id_usuario,$fecha)
     {   
+        // array para guardar los valores del foreach
         $historialEMP = [];
 
         $historial_emp = historial_emp::where('id_usuario',$id_usuario)->where('fecha',$fecha)->get();
 
+        // recorremos los datos recuperados
         foreach($historial_emp as $historial){
             
             $usuario = usuario::where('id_usuario',$id_usuario)->get('id_empleado');
 
             $empleado = empleado::where('id_empleado', $id_usuario)->get(['id_empleado','nombres','apellidos']);
-            
+
             $historial->id_usuario = $empleado;
 
+            // almaceno los datos al array
             $historialEMP[] = $historial;
         };
 

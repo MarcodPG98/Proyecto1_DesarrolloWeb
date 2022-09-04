@@ -28,9 +28,18 @@ Route::group([
     //Route::apiResource('historial_emp', historial_empController::class);
 });
 // route Usuario
-Route::get('usuario/{usuario},{contrasena}', [usuarioController::class, 'verificarUsuario']);
+Route::get('usuario/{usuario}', [usuarioController::class, 'verificarUsuario']);
+Route::get('usuario/', [usuarioController::class, 'index']);
+Route::post('usuario/', [usuarioController::class, 'store']);
 Route::get('usuario/{id_usuario}', [usuarioController::class, 'show']);
+Route::put('usuario/{id_usuario}', [usuarioController::class, 'update']);
+Route::delete('usuario/{id_usuario}', [usuarioController::class, 'destroy']);
+
 
 // route historial_emp
 Route::get('historial_emp/{id_usuario},{fecha}', [historial_empController::class, 'historialUsuario']);
-Route::get('historial_emp/{id}', [historial_empController::class, 'show']);
+Route::get('historial_emp/', [historial_empController::class, 'index']);
+Route::post('historial_emp/', [historial_empController::class, 'store']);
+Route::get('historial_emp/{id', [historial_empController::class, 'show']);
+Route::put('historial_emp/{id_historial_emp}', [historial_empController::class, 'update']);
+Route::delete('historial_emp/{id_historial_emp}', [historial_empController::class, 'destroy']);

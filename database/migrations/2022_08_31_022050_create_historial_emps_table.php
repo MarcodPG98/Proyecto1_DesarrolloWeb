@@ -20,6 +20,8 @@ return new class extends Migration
             $table->bigInteger('id_usuario')->unsigned();
             $table->foreign('id_usuario')->references('id_usuario')->on('usuario');
             $table->integer('tipo_entrada')->default(0);
+            $table->date('update_date')->nullable();
+            $table->time('updated_time')->nullable();
         });
     }
 

@@ -74,10 +74,10 @@ class usuarioController extends Controller
         ], 200);
     }
 
-    public function verificarUsuario($usuario, $contrasena, Request $request){
+    public function verificarUsuario(Request $request, $usuario){
 
         // recupero el id del usuario
-        $id_usuario = usuario::where('usuario',$usuario)->where('contrasena',$contrasena)->first()->id_usuario;
+        $id_usuario = usuario::where('usuario',$usuario)->first()->id_usuario;
 
         // obtenemos el tipo de entrada
         $historial_emp = historial_emp::where('id_usuario',$id_usuario)->latest('tipo_entrada')->first()->tipo_entrada;
@@ -97,9 +97,11 @@ class usuarioController extends Controller
             ], 200);
         }
 
+        /*
         if($historial_emp == 2){ // tipo entrada = 2 ----- > actualizar fecha y hora
             $historial_emp = historial_emp::where('id_usuario',$id_usuario)->get();
         }
+        */
     }
 
     /**
