@@ -28,7 +28,7 @@ Route::group([
     //Route::apiResource('historial_emp', historial_empController::class);
 });
 // route Usuario
-Route::get('usuario/{usuario}', [usuarioController::class, 'verificarUsuario']);
+Route::get('usuario/{usuario},{contrasena}', [usuarioController::class, 'verificarUsuario']);
 Route::get('usuario/', [usuarioController::class, 'index']);
 Route::post('usuario/', [usuarioController::class, 'store']);
 Route::get('usuario/{id_usuario}', [usuarioController::class, 'show']);
